@@ -129,8 +129,8 @@ dmypy.json
 .pyre/
 
 # VS Code
-.vscode/
-
+.vscode/*
+!.vscode/launch.json
 media/*
 profiles/*
 static/*
