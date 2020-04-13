@@ -1,10 +1,14 @@
 import os
+import environ
+
+env = environ.Env()
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
-SECRET_KEY = '77h-p-_zy@j!4$k4z*dk81wn-scba%gl@%km3)rtcah#15rn9d'
+SECRET_KEY = env.str(
+    'SECRET_KEY', '77h-p-_zy@j!4$k4z*dk81wn-scba%gl@%km3)rtcah#15rn9d')
 
-DEBUG = True
+DEBUG = env.bool('DEBUG', True)
 
 ALLOWED_HOSTS = []
 
@@ -55,8 +59,12 @@ WSGI_APPLICATION = 'tbo_dash.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': env.str('POSTGRES_DB', 'postgres_db'),
+        'USER': env.str('POSTGRES_USER', 'postgresuser'),
+        'PASSWORD': env.str('POSTGRES_PASSWORD', 'mysecretpass'),
+        'HOST': env.str('POSTGRES_HOST', 'localhost'),
+        'PORT': 5432
     }
 }
 
@@ -101,7 +109,7 @@ REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': [
         'rest_framework.authentication.TokenAuthentication',
     ],
-    
+
     'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',
     'PAGE_SIZE': 25
 }
