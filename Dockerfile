@@ -12,7 +12,7 @@ COPY Pipfile Pipfile.lock /app/
 RUN if [[ "$DEBUG" == "TRUE" ]] || [[ "$DEBUG" == "True" ]] || [[ "$DEBUG" == "1" ]]; then \
     echo "Install with DEV packages"; \
     pipenv install --system --deploy --ignore-pipfile --dev; \
-    pip3 uninstall pipenv virtualenv virtualenv-clone pip -y; \
+    if [ ! -e /usr/bin/pip ]; then ln -sf pip3 /usr/bin/pip; fi; \
     else \
     echo "Install only PROD packages"; \
     pipenv install --system --deploy --ignore-pipfile; \
