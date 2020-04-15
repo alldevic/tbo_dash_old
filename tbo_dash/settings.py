@@ -28,7 +28,7 @@ THIRD_PARTY_APPS = [
 ]
 
 LOCAL_APPS = [
-    'docs',
+    'tbo_dash.docs',
 ]
 
 if DEBUG:

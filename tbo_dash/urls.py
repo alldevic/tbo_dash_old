@@ -10,7 +10,7 @@ admin.site.index_title = "TBO Dashboard"
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('docs/', include('docs.urls')),
+    path('docs/', include('tbo_dash.docs.urls')),
     path('', include('djoser.urls')),
     path('', include('djoser.urls.authtoken')),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT) \
