@@ -7,27 +7,36 @@ from .models import (Dashboard, Device, Landfill, Sensor,
 
 @admin.register(Dashboard)
 class DashboardAdmin(ImportExportActionModelAdmin):
-    pass
+    list_display = ('name', )
+    search_fields = ('name', )
+    filter_horizontal = ("landfills", 'users')
 
 
 @admin.register(Device)
 class DeviceAdmin(ImportExportActionModelAdmin):
-    pass
+    list_display = ('name', 'fw_ver', 'landfill')
+    list_filter = ('fw_ver', 'landfill')
+    search_fields = ('name',)
 
 
 @admin.register(Landfill)
 class LandfillAdmin(ImportExportActionModelAdmin):
-    pass
+    list_display = ('name', 'organization')
+    list_filter = ('organization',)
+    search_fields = ('name',)
 
 
 @admin.register(Sensor)
 class SensorAdmin(ImportExportActionModelAdmin):
-    pass
+    list_display = ('name', 'device', 'value_type')
+    list_filter = ('device', 'value_type')
+    search_fields = ('name',)
 
 
 @admin.register(SensorValue)
 class SensorValueAdmin(ImportExportActionModelAdmin):
-    pass
+    list_display = ('sensor', 'value', 'timestamp')
+    list_filter = ('sensor',)
 
 
 @admin.register(SensorValueType)
