@@ -3,7 +3,7 @@
 import django.contrib.auth.models
 from django.db import migrations, models
 import django.utils.timezone
-import tbo_dash.profiles.models
+import tbo_dash.users.models
 
 
 class Migration(migrations.Migration):
@@ -55,7 +55,7 @@ class Migration(migrations.Migration):
                 'swappable': 'AUTH_USER_MODEL',
             },
             managers=[
-                ('objects', tbo_dash.profiles.models.UserProfileManager()),
+                ('objects', tbo_dash.users.models.UserProfileManager()),
             ],
         ),
     ]

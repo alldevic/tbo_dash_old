@@ -2,5 +2,5 @@ from django.apps import AppConfig
 
 
 class ProfilesConfig(AppConfig):
-    name = 'profiles'
+    name = 'users'
     verbose_name = "Профили"

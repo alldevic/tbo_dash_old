@@ -29,7 +29,7 @@ THIRD_PARTY_APPS = [
 
 LOCAL_APPS = [
     'tbo_dash.docs',
-    'tbo_dash.profiles',
+    'tbo_dash.users',
 ]
 
 if DEBUG:
@@ -89,7 +89,7 @@ DATABASES = {
     }
 }
 
-AUTH_USER_MODEL = 'profiles.UserProfile'
+AUTH_USER_MODEL = 'users.UserProfile'
 
 AUTH_PASSWORD_VALIDATORS = [
     {
