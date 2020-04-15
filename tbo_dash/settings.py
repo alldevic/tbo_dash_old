@@ -29,6 +29,7 @@ THIRD_PARTY_APPS = [
 
 LOCAL_APPS = [
     'tbo_dash.docs',
+    'tbo_dash.profiles',
 ]
 
 if DEBUG:
@@ -87,6 +88,8 @@ DATABASES = {
         'PORT': 5432
     }
 }
+
+AUTH_USER_MODEL = 'profiles.UserProfile'
 
 AUTH_PASSWORD_VALIDATORS = [
     {
