@@ -20,6 +20,7 @@ autopep8 = "*"
 rope = "*"
 ptvsd = "*"
 django-silk = "*"
+drf-generators = "*"
 
 [requires]
 python_version = "3.8"
