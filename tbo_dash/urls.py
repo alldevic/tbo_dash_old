@@ -13,6 +13,7 @@ urlpatterns = [
     path('docs/', include('tbo_dash.docs.urls')),
     path('', include('djoser.urls')),
     path('', include('djoser.urls.authtoken')),
+    path('', include('tbo_dash.dashboards.urls')),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT) \
     + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 

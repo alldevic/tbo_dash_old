@@ -31,6 +31,7 @@ THIRD_PARTY_APPS = [
 LOCAL_APPS = [
     'tbo_dash.docs',
     'tbo_dash.users',
+    'tbo_dash.dashboards',
 ]
 
 if DEBUG:
