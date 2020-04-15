@@ -1,25 +1,14 @@
-from django.conf.urls import include, url
+from rest_framework.routers import SimpleRouter
 from tbo_dash.dashboards import views
 
 
-urlpatterns = [
+router = SimpleRouter()
 
-  url(r'^sensorvaluetype/(?P<id>[0-9]+)/$', views.SensorValueTypeAPIView.as_view()),
-  url(r'^sensorvaluetype/$', views.SensorValueTypeAPIListView.as_view()),
+router.register(r'sensorvaluetypes', views.SensorValueTypeViewSet)
+router.register(r'sensors', views.SensorViewSet)
+router.register(r'sensorvalues', views.SensorValueViewSet)
+router.register(r'devices', views.DeviceViewSet)
+router.register(r'landfills', views.LandfillViewSet)
+router.register(r'dashboards', views.DashboardViewSet)
 
-  url(r'^sensor/(?P<id>[0-9]+)/$', views.SensorAPIView.as_view()),
-  url(r'^sensor/$', views.SensorAPIListView.as_view()),
-
-  url(r'^sensorvalue/(?P<id>[0-9]+)/$', views.SensorValueAPIView.as_view()),
-  url(r'^sensorvalue/$', views.SensorValueAPIListView.as_view()),
-
-  url(r'^device/(?P<id>[0-9]+)/$', views.DeviceAPIView.as_view()),
-  url(r'^device/$', views.DeviceAPIListView.as_view()),
-
-  url(r'^landfill/(?P<id>[0-9]+)/$', views.LandfillAPIView.as_view()),
-  url(r'^landfill/$', views.LandfillAPIListView.as_view()),
-
-  url(r'^dashboard/(?P<id>[0-9]+)/$', views.DashboardAPIView.as_view()),
-  url(r'^dashboard/$', views.DashboardAPIListView.as_view()),
-
-]
+urlpatterns = router.urls
