@@ -6,6 +6,7 @@ from django.contrib.auth.models import Group as BaseGroup
 from django.core.mail import send_mail
 from django.utils import timezone
 from django.utils.translation import ugettext_lazy as _
+from django.urls import reverse
 
 
 class UserProfileManager(BaseUserManager):
@@ -55,6 +56,10 @@ class AbstractUserProfile(AbstractBaseUser, PermissionsMixin):
     )
     first_name = models.CharField(_('first name'), max_length=30, blank=True)
     last_name = models.CharField(_('last name'), max_length=150, blank=True)
+    organization = models.ForeignKey('Organization',
+                                     verbose_name='Организация',
+                                     on_delete=models.SET_NULL,
+                                     blank=True, null=True)
     position = models.CharField(verbose_name="Должность",
                                 max_length=150,
                                 blank=True)
@@ -118,3 +123,21 @@ class Group(BaseGroup):
         verbose_name = _('group')
         verbose_name_plural = _('groups')
         proxy = True
+
+
+class Organization(models.Model):
+    """Model definition for Organization."""
+
+    name = models.CharField("Наименование оранизации", max_length=250)
+    details = models.CharField('Реквизиты организации', max_length=500)
+    contacts = models.CharField('Контактные данные', max_length=250)
+
+    class Meta:
+        """Meta definition for Organization."""
+
+        verbose_name = 'Организация'
+        verbose_name_plural = 'Организации'
+
+    def __str__(self):
+        """Unicode representation of Organization."""
+        return self.name
