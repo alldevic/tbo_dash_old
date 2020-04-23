@@ -1,14 +1,22 @@
 import os
-import environ
+from os import environ
 
-env = environ.Env()
+
+def get_env(key, default=None):
+    val = environ.get(key, default)
+    if val == 'True':
+        val = True
+    elif val == 'False':
+        val = False
+    return val
+
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
-SECRET_KEY = env.str(
+SECRET_KEY = get_env(
     'SECRET_KEY', '77h-p-_zy@j!4$k4z*dk81wn-scba%gl@%km3)rtcah#15rn9d')
 
-DEBUG = env.bool('DEBUG', True)
+DEBUG = get_env('DEBUG', True)
 
 ALLOWED_HOSTS = ['*']
 
@@ -86,10 +94,10 @@ WSGI_APPLICATION = 'tbo_dash.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': env.str('POSTGRES_DB', 'postgres_db'),
-        'USER': env.str('POSTGRES_USER', 'postgresuser'),
-        'PASSWORD': env.str('POSTGRES_PASSWORD', 'mysecretpass'),
-        'HOST': env.str('POSTGRES_HOST', 'localhost'),
+        'NAME':  get_env('POSTGRES_DB', 'postgres_db'),
+        'USER':  get_env('POSTGRES_USER', 'postgresuser'),
+        'PASSWORD':  get_env('POSTGRES_PASSWORD', 'mysecretpass'),
+        'HOST':  get_env('POSTGRES_HOST', 'localhost'),
         'PORT': 5432
     }
 }
