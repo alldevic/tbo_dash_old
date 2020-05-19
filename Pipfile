@@ -20,6 +20,7 @@ flake8 = "*"
 autopep8 = "*"
 rope = "*"
 ptvsd = "*"
+debugpy = "==1.0.0b9"
 django-silk = "*"
 drf-generators = "*"
 

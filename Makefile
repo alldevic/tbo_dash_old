@@ -10,7 +10,7 @@ export CURRENT_UID
 up:
 	docker-compose up -d
 upb:
-	docker-compose up -d --force-recreate --build
+	docker-compose up -d --force-recreate --build --remove-orphans
 down:
 	docker-compose down
 sh:

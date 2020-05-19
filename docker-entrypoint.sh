@@ -35,17 +35,21 @@ python3 manage.py migrate
 echo >&2 "Collect static..."
 python3 manage.py collectstatic --noinput
 
-if [[ ${DEBUG} == 'TRUE' ]] || [[ ${DEBUG} == 'True' ]] || [[ ${DEBUG} == '1' ]]; then
+if [[ ${DEBUGPY} == 'TRUE' ]] || [[ ${DEBUGPY} == 'True' ]] || [[ ${DEBUGPY} == '1' ]]; then
     echo >&2 "Starting debug server..."
-    exec uvicorn tbo_dash.asgi:application \
-        --host 0.0.0.0 \
-        --port 8000 \
-        --access-log \
-        --use-colors \
-        --log-level debug \
-        --lifespan off \
-        --reload \
-        "$@"
+    exec python3 -m debugpy --listen 0.0.0.0:5678 \
+            -m uvicorn tbo_dash.asgi:application \
+            --host 0.0.0.0 \
+            --port 8000 \
+            --access-log \
+            --use-colors \
+            --log-level debug \
+            --lifespan off \
+            --reload \
+            "$@"
+elif [[ ${DEBUG} == 'TRUE' ]] || [[ ${DEBUG} == 'True' ]] || [[ ${DEBUG} == '1' ]]; then
+    echo >&2 "Starting dev server..."
+    exec python3 manage.py runserver 0.0.0.0:8000
 else
     echo >&2 "Starting Gunicorn..."
     exec gunicorn tbo_dash.asgi:application \
@@ -55,4 +59,5 @@ else
         --bind 0.0.0.0:8000 \
         --workers=3 \
         "$@"
+fi
 fi

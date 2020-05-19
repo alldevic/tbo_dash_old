@@ -131,6 +131,7 @@ dmypy.json
 # VS Code
 .vscode/*
 !.vscode/launch.json
+!.vscode/tasks.json
 media/*
 profiles/*
 static/*

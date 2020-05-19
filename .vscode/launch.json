@@ -7,12 +7,15 @@
             "request": "attach",
             "port": 5678,
             "host": "172.20.0.5",
+            "django": true,
+            "preLaunchTask": "make upb",
+            "postDebugTask": "make down",
             "pathMappings": [
                 {
                     "localRoot": "${workspaceFolder}",
                     "remoteRoot": "."
                 }
-            ]
+            ],
         }
     ]
 }
