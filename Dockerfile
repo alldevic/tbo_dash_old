@@ -1,4 +1,4 @@
-FROM alpine:3.11.5 AS build
+FROM alpine:3.11.6 AS build
 ARG DEBUG
 ENV PYTHONUNBUFFERED 1
 RUN mkdir -p /app 
@@ -60,4 +60,4 @@ EXPOSE 8000 5678
 COPY --from=build / /
 WORKDIR /app
 
-ENTRYPOINT ["./docker-entrypoint.sh"]
+CMD ["./docker-entrypoint.sh"]
