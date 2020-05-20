@@ -1,7 +1,7 @@
 {
     "_meta": {
         "hash": {
-            "sha256": "e605b61cd4c54f4686e4cd80b65973a8df1431db1b458264e50d1c816de3b4f5"
+            "sha256": "c9014f1ee0905205c344c8985479cbcfaeaf6aeb3ad611e43b15350b2c63104f"
         },
         "pipfile-spec": 6,
         "requires": {
@@ -172,21 +172,6 @@
             ],
             "version": "==1.7.1"
         },
-        "python-engineio": {
-            "hashes": [
-                "sha256:222926adb4bc6e03a8fc8e0ef2a3309f030c1c3f8e0fcc94c9ba214574565f02",
-                "sha256:2481732d93646998f7372ef0ecf003af7817b82720b881db173c3d50b4887916"
-            ],
-            "version": "==3.12.1"
-        },
-        "python-socketio": {
-            "hashes": [
-                "sha256:149b98c33f8c3d09273fb4ebeb83781e4dc9411b56b27d9f058bec1bd1ed74b7",
-                "sha256:81280cbbb7018d8ecdd006bf6025979733d347c0f2612282c1e21f6ed7d3b55b"
-            ],
-            "index": "pypi",
-            "version": "==4.5.1"
-        },
         "pytz": {
             "hashes": [
                 "sha256:a494d53b6d39c3c6e44c3bec237336e14305e4f29bbf800b599253057fbb79ed",
@@ -210,13 +195,6 @@
             ],
             "index": "pypi",
             "version": "==5.3.1"
-        },
-        "six": {
-            "hashes": [
-                "sha256:236bdbdce46e6e6a3d61a337c0f8b763ca1e8717c03b369e87a7ec7ce1319c0a",
-                "sha256:8f3cd2e254d8f793e7f3d6d9df77b92252b52637291d0f0da013c76ea2724b6c"
-            ],
-            "version": "==1.14.0"
         },
         "sqlparse": {
             "hashes": [

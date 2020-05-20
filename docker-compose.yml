@@ -76,7 +76,15 @@ services:
       private_network:
         ipv4_address: 172.20.0.7
       default:
-          
+  
+  redis:
+    container_name: tbo_redis
+    image: redis:6.0.3-alpine3.11
+    depends_on:
+      - backend
+    networks:
+      private_network:
+        ipv4_address: 172.20.0.8
 
 networks:
   private_network:

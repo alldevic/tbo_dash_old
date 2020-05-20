@@ -1,6 +1,7 @@
 import os
 
 from django.core.asgi import get_asgi_application
+from tbo_dash.ws_main.socket_app import websocket_application
 
 os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'tbo_dash.settings')
 
@@ -14,23 +15,3 @@ async def application(scope, receive, send):
         await websocket_application(scope, receive, send)
     else:
         raise NotImplementedError(f"Unknown scope type {scope['type']}")
-
-
-async def websocket_application(scope, receive, send):
-    while True:
-        event = await receive()
-
-        if event['type'] == 'websocket.connect':
-            await send({
-                'type': 'websocket.accept'
-            })
-
-        if event['type'] == 'websocket.disconnect':
-            break
-
-        if event['type'] == 'websocket.receive':
-            if event['text'] == 'ping':
-                await send({
-                    'type': 'websocket.send',
-                    'text': 'pong!'
-                })
