@@ -1,42 +1,17 @@
 import asyncio
-# from .redis_cli import RedisCli
+import socketio
 
+mgr = socketio.AsyncRedisManager('redis://redis:6379/0')
+sio_app = socketio.AsyncServer(async_mode='asgi', client_manager=mgr)
 
-async def send_messages(pubsub, done, send):
-    while not done:
-        message = pubsub.get_message()
-        if message:
-            await send({
-                'type': 'websocket.send',
-                'text': "Event triggered",
-            })
-        else:
-            await asyncio.sleep(0.2)
+@sio_app.event
+async def connect(sid, environ):
+    print("connect ", sid)
 
+@sio_app.event
+async def disconnect(sid):
+    print('disconnect ', sid)
 
-async def websocket_application(scope, receive, send):
-    done = False
-    while True:
-        event = await receive()
-        if event['type'] == 'websocket.connect':
-            # redis_cli = RedisCli.get()
-            # pubsub = redis_cli.pubsub()
-            # pubsub.psubscribe('__keyspace@0__:trigger_event')
-
-            await send({
-                'type': 'websocket.accept',
-                'status_code': 101,
-            })
-            # await send_messages(pubsub, done, send)
-
-        if event['type'] == 'websocket.disconnect':
-            print("Disconectin web socket")
-            done = True
-            break
-
-        if event['type'] == 'websocket.receive':
-            if event['text'] == 'ping':
-                await send({
-                    'type': 'websocket.send',
-                    'text': 'pong!'
-                })
+@sio_app.event
+async def ping_from_client(sid):
+    await sio_app.emit('pong_from_server', room=sid)

@@ -10,6 +10,7 @@
             "django": true,
             "preLaunchTask": "make upbd",
             "postDebugTask": "make down",
+            "showReturnValue": true,
             "pathMappings": [
                 {
                     "localRoot": "${workspaceFolder}",
