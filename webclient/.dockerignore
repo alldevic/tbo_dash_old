@@ -1,0 +1,12 @@
+__sapper__
+.dockerignore
+.git
+.gitignore
+cypress/screenshots/
+docker-compose.yml
+Dockerfile
+**/node_modules
+npm-debug.log
+package-lock.json
+yarn.lock
+yarn-error.log
