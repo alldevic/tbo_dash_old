@@ -19,11 +19,11 @@ export FRONTEND_IMAGE
 export SERVICES
 
 up:
-	DEBUGPY=False docker-compose up -d
+	DEBUGPY=False docker-compose up -d $(SERVICES)
 upb:
 	DEBUGPY=False docker-compose up -d --force-recreate --build --remove-orphans $(SERVICES)
 upbd:
-	DEBUGPY=True docker-compose up -d  --build
+	DEBUGPY=True docker-compose up -d  --build $(SERVICES)
 down:
 	DEBUGPY=True docker-compose down
 sh:
