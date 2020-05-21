@@ -29,10 +29,9 @@ async def pong_from_server():
 
 
 async def start_server():
-    await sio.connect('http://backend:8000',socketio_path='wsdash')
+    await sio.connect('http://backend:8000', socketio_path='api/v1/wsdash')
     await sio.wait()
 
 
 if __name__ == '__main__':
     loop.run_until_complete(start_server())
-

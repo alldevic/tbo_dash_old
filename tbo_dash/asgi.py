@@ -8,6 +8,6 @@ os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'tbo_dash.settings')
 
 django_app = get_asgi_application()
 
-application = socketio.ASGIApp(sio_app, 
-                                socketio_path="wsdash",
-                                other_asgi_app=django_app)
+application = socketio.ASGIApp(sio_app,
+                               socketio_path="api/v1/wsdash",
+                               other_asgi_app=django_app)
