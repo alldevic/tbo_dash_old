@@ -20,5 +20,5 @@ urlpatterns = [
 if settings.DEBUG:
     # Silk profiler
     urlpatterns = [
-        path('silk/', include('silk.urls', namespace='silk')),
+        path('api/silk/', include('silk.urls', namespace='silk')),
     ] + urlpatterns
