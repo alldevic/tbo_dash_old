@@ -34,5 +34,7 @@ su:
 	docker exec -it /tbo_backend python3 manage.py createsuperuser
 logs:
 	docker logs /tbo_backend -f
+flogs:
+	docker logs /tbo_webclient_dev -f
 fclean:
 	rm -rf ./webclient/node_modules/ ./webclient/src/node_modules/ ./webclient/package-lock.json ./webclient/yarn.lock ./webclient/yarn-error.log ./webclient/__sapper__/
