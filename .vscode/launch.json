@@ -12,17 +12,17 @@
             "showReturnValue": true,
             "pathMappings": [
                 {
-                    "localRoot": "${workspaceFolder}",
-                    "remoteRoot": "."
+                    "localRoot": "${workspaceFolder}/tbo_dash",
+                    "remoteRoot": "./tbo_dash"
                 }
-            ],
+            ]
         },
         {
             "type": "chrome",
             "request": "launch",
             "name": "Launch Chrome",
             "url": "http://localhost:3000",
-            "webRoot": "${workspaceFolder}/webclient/src",
+            "webRoot": "${workspaceFolder}/webclient",
             "postDebugTask": "make down"
         }
     ],
