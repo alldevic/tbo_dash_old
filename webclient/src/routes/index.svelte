@@ -1,5 +1,5 @@
 <script>
-  import Table from "../components/Table.svelte";
+  import PreloadTable from "../components/PreloadTable.svelte";
   import io from "socket.io-client";
 
   let rows = [];
@@ -34,4 +34,4 @@
   <title>TBO Dashboard</title>
 </svelte:head>
 
-<Table {rows} {headers} />
+<PreloadTable {rows} {headers} />
