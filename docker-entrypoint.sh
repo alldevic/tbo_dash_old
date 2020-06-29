@@ -8,7 +8,7 @@ if [[ ${DEBUGPY} == 'TRUE' ]] || [[ ${DEBUGPY} == 'True' ]] || [[ ${DEBUGPY} == 
             --port 8000 \
             --access-log \
             --use-colors \
-            --log-level debug \
+            --log-level info \
             --lifespan off \
             --reload
 elif [[ ${DEBUG} == 'TRUE' ]] || [[ ${DEBUG} == 'True' ]] || [[ ${DEBUG} == '1' ]]; then
@@ -18,7 +18,7 @@ elif [[ ${DEBUG} == 'TRUE' ]] || [[ ${DEBUG} == 'True' ]] || [[ ${DEBUG} == '1' 
             --port 8000 \
             --access-log \
             --use-colors \
-            --log-level debug \
+            --log-level info \
             --lifespan off \
             --reload
 else
